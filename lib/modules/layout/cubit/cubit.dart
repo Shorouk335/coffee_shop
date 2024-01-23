@@ -7,10 +7,13 @@ class LayoutCubit extends Cubit<LayoutState> {
 
   static LayoutCubit get(context) => BlocProvider.of(context);
 
-  late TabController? tabController;
+  int clickTab = 0 ;
 
-  changeTabController(int tab) {
-    tabController!.animateTo(tab);
-    emit(ChangeTabControllerState());
+  // late TabController? tabController = TabController(
+  //       length: 5,  initialIndex: 0, vsync: Tra);
+
+  changeClickTab(int tab) {
+    clickTab = tab ;
+    emit( ChangeClickTabState());
   }
 }

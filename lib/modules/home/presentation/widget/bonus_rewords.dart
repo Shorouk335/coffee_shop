@@ -34,17 +34,17 @@ class BounsRewordsWidget extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
                         "BONUS REWARDS",
-                        style: TextStyle(color: Colors.white, fontSize: 20.0),
+                        style: TextStyle(color: Colors.white, fontSize: 22.0),
                       ),
                       SizedBox(
-                        height: 5,
+                        height: 10,
                       ),
                       Text("Coffee Delivered to your house",
-                          style: TextStyle(color: Colors.white, fontSize: 18.0))
+                          style: TextStyle(color: Colors.white, fontSize: 20.0))
                     ],
                   ),
                 ),
@@ -54,42 +54,43 @@ class BounsRewordsWidget extends StatelessWidget {
                 child: Padding(
                   padding: EdgeInsets.all(8.0),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Order 2 bags of coffee and get bonus stars!",
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 18.0,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                              "Order any of our coffee and get an additional 30 Stars! Now that’s how you get free coffee!",
-                              style: TextStyle(
-                                  color: Colors.black, fontSize: 15.0))
-                        ],
+                      Text(
+                        "Order 2 bags of coffee and get bonus stars!",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold),
                       ),
-                      Container(
-                        decoration: BoxDecoration(
-                            color: AppColors.primary,
-                            borderRadius: BorderRadius.circular(15.0)),
-                        child: Padding(
-                          padding: const EdgeInsets.all(5.0),
-                          child: TextButton(
-                            onPressed: () {},
-                            child: Text(
-                              "Shop Now",
-                              style: TextStyle(
-                                  color: Colors.white, fontSize: 20.0),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                          "Order any of our coffee and get an additional 30 Stars! Now that’s how you get free coffee!",
+                          style:
+                              TextStyle(color: Colors.black, fontSize: 15.0)),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                                color: AppColors.primary,
+                                borderRadius: BorderRadius.circular(15.0)),
+                            child: Padding(
+                              padding: const EdgeInsets.all(5.0),
+                              child: TextButton(
+                                onPressed: () {},
+                                child: Text(
+                                  "Shop Now",
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 20.0),
+                                ),
+                              ),
                             ),
-                          ),
-                        ),
+                          )
+                        ],
                       )
                     ],
                   ),
@@ -99,11 +100,14 @@ class BounsRewordsWidget extends StatelessWidget {
           ),
         ),
         Positioned(
-            top: 20,
             right: 10,
-            child: SvgIcon(
-              svg: "logo".svg(),
-              width: 45,
+            top: 20,
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 100.0),
+              child: SvgIcon(
+                svg: "logo".svg(),
+                width: 55,
+              ),
             )),
       ],
     );

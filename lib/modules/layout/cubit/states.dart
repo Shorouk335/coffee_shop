@@ -1,3 +1,3 @@
 abstract class LayoutState {}
 class InitialLayoutState extends LayoutState {} 
-class ChangeTabControllerState extends  LayoutState {}
+class ChangeClickTabState extends  LayoutState {}

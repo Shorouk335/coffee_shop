@@ -6,7 +6,7 @@ import 'package:go_router/go_router.dart';
 
 class NavigationService {
 
-  static pushNamed(BuildContext context, String name,
+  static pushNamed(String name,
       {Object? extra,
       Map<String, String> pathParameters = const <String, String>{},
       Map<String, dynamic> queryParameters = const <String, dynamic>{}}) {

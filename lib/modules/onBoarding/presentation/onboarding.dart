@@ -39,7 +39,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
               return Container(
-                color: AppColors.background,
+                color: AppColors.onBackground,
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
                   child: Column(
@@ -53,10 +53,10 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                             InkWell(
                               onTap: () {
                                 NavigationService.pushReplacement(
-                                    context, AppRouter.home1 , 
-                                    extra: 0 
-                                    
-                                    );
+                                  context,
+                                  AppRouter.home,
+                                
+                                );
                               },
                               child: Text("Skip",
                                   style: TextStyle(
@@ -108,11 +108,11 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                             InkWell(
                               onTap: () {
                                 if (indexPage == titleList.length - 1) {
-                                    NavigationService.pushReplacement(
-                                    context, AppRouter.home1 , 
-                                    extra: 0 
-                                    
-                                    );
+                                  NavigationService.pushReplacement(
+                                    context,
+                                    AppRouter.home,
+                                  
+                                  );
                                 } else {
                                   pageController.nextPage(
                                       duration: Duration(milliseconds: 300),
@@ -126,11 +126,11 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                                 ),
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(
-                                      horizontal: 20.0, vertical: 10.0),
+                                      horizontal: 25.0, vertical: 15.0),
                                   child: Text(
                                     "Next",
                                     style: TextStyle(
-                                        color: Colors.white, fontSize: 18.0),
+                                        color: Colors.white, fontSize: 20.0),
                                   ),
                                 ),
                               ),

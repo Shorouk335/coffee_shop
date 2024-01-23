@@ -1,3 +1,5 @@
+import 'package:coffee_shop/core/router/navigation_service.dart';
+import 'package:coffee_shop/core/router/router.dart';
 import 'package:coffee_shop/core/theme/dynamic_theme/colors.dart';
 import 'package:coffee_shop/modules/layout/cubit/cubit.dart';
 import 'package:coffee_shop/modules/layout/cubit/states.dart';
@@ -30,13 +32,14 @@ class _BottomTabBarState extends State<BottomTabBar> {
                     children: [
                       InkWell(
                         onTap: () {
-                          cubit.changeTabController(0);
+                          NavigationService.pushNamed(AppRouter.home);
+                           cubit.changeClickTab(0);
                         },
                         child: Column(
                           children: [
                             Icon(
                               Icons.home,
-                              color: cubit.tabController?.index == 0
+                              color: cubit.clickTab == 0
                                   ? AppColors.primary
                                   : Colors.grey,
                               size: 25.0,
@@ -45,7 +48,7 @@ class _BottomTabBarState extends State<BottomTabBar> {
                               "Home",
                               style: TextStyle(
                                 fontSize: 18.0,
-                                color: cubit.tabController?.index == 0
+                                color: cubit.clickTab == 0
                                     ? AppColors.primary
                                     : Colors.grey,
                               ),
@@ -55,13 +58,14 @@ class _BottomTabBarState extends State<BottomTabBar> {
                       ),
                       InkWell(
                         onTap: () {
-                          cubit.changeTabController(1);
+                          NavigationService.pushNamed(AppRouter.home);
+                           cubit.changeClickTab(1);
                         },
                         child: Column(
                           children: [
                             Icon(
                               Icons.qr_code_scanner,
-                              color: cubit.tabController?.index == 1
+                              color: cubit.clickTab== 1
                                   ? AppColors.primary
                                   : Colors.grey,
                               size: 25.0,
@@ -70,7 +74,7 @@ class _BottomTabBarState extends State<BottomTabBar> {
                               "Scan/Pay",
                               style: TextStyle(
                                 fontSize: 18.0,
-                                color: cubit.tabController?.index == 1
+                                color: cubit.clickTab == 1
                                     ? AppColors.primary
                                     : Colors.grey,
                               ),
@@ -80,13 +84,14 @@ class _BottomTabBarState extends State<BottomTabBar> {
                       ),
                       InkWell(
                         onTap: () {
-                          cubit.changeTabController(2);
+                          NavigationService.pushNamed(AppRouter.order);
+                           cubit.changeClickTab(2);
                         },
                         child: Column(
                           children: [
                             Icon(
                               Icons.coffee,
-                              color: cubit.tabController?.index == 2
+                              color: cubit.clickTab == 2
                                   ? AppColors.primary
                                   : Colors.grey,
                               size: 25.0,
@@ -95,7 +100,7 @@ class _BottomTabBarState extends State<BottomTabBar> {
                               "Order",
                               style: TextStyle(
                                 fontSize: 18.0,
-                                color: cubit.tabController?.index == 2
+                                color: cubit.clickTab == 2
                                     ? AppColors.primary
                                     : Colors.grey,
                               ),
@@ -105,13 +110,14 @@ class _BottomTabBarState extends State<BottomTabBar> {
                       ),
                       InkWell(
                         onTap: () {
-                          cubit.changeTabController(3);
+                           NavigationService.pushNamed(AppRouter.order);
+                           cubit.changeClickTab(3);
                         },
                         child: Column(
                           children: [
                             Icon(
                               Icons.account_circle,
-                              color: cubit.tabController?.index == 3
+                              color: cubit.clickTab == 3
                                   ? AppColors.primary
                                   : Colors.grey,
                               size: 25.0,
@@ -120,7 +126,7 @@ class _BottomTabBarState extends State<BottomTabBar> {
                               "Account",
                               style: TextStyle(
                                 fontSize: 18.0,
-                                color: cubit.tabController?.index == 3
+                                color: cubit.clickTab == 3
                                     ? AppColors.primary
                                     : Colors.grey,
                               ),
@@ -130,13 +136,14 @@ class _BottomTabBarState extends State<BottomTabBar> {
                       ),
                       InkWell(
                         onTap: () {
-                          cubit.changeTabController(4);
+                           NavigationService.pushNamed(AppRouter.order);
+                          cubit.changeClickTab(4);
                         },
                         child: Column(
                           children: [
                             Icon(
                               Icons.star_border,
-                              color: cubit.tabController?.index == 4
+                              color: cubit.clickTab== 4
                                   ? AppColors.primary
                                   : Colors.grey,
                               size: 25.0,
@@ -145,7 +152,7 @@ class _BottomTabBarState extends State<BottomTabBar> {
                               "Rewards",
                               style: TextStyle(
                                 fontSize: 18.0,
-                                color: cubit.tabController?.index == 4
+                                color: cubit.clickTab == 4
                                     ? AppColors.primary
                                     : Colors.grey,
                               ),
