@@ -7,9 +7,10 @@ import 'package:flutter/material.dart';
 
 class FavDrinkWidget extends StatelessWidget {
   const FavDrinkWidget(
-      {super.key, required this.favDrinkModel, required this.sizeWidth});
+      {super.key, required this.favDrinkModel, required this.sizeWidth , this.isFav = true});
   final FavDrinkModel favDrinkModel;
-  final double sizeWidth;
+  final double sizeWidth; 
+  final bool isFav ;
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -28,6 +29,7 @@ class FavDrinkWidget extends StatelessWidget {
               color: Colors.white, borderRadius: BorderRadius.circular(15.0)),
           child: Column(
             children: [
+              if (isFav)
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -38,9 +40,10 @@ class FavDrinkWidget extends StatelessWidget {
                   )
                 ],
               ),
-              SvgIcon(
-                svg: favDrinkModel.img.svg(),
-                width: 100,
+              Expanded(
+                child: SvgIcon(
+                  svg: favDrinkModel.img.svg(),
+                ),
               ),
               SizedBox(
                 height: 10,
@@ -52,7 +55,10 @@ class FavDrinkWidget extends StatelessWidget {
                     fontSize: 20.0,
                     overflow: TextOverflow.ellipsis,
                     fontWeight: FontWeight.w400),
-              )
+              ), 
+              SizedBox(
+                height: 20,
+              ),
             ],
           ),
         ),

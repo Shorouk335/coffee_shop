@@ -78,12 +78,12 @@ class _OrderScreenState extends State<OrderScreen> {
               itemCount: 6,
               itemBuilder: (context , index){ 
                 return  Container(
-                 height: 280,
+                 height: 250,
                   child: ListView.builder(
                               scrollDirection: Axis.horizontal,
                               itemCount: favDrinkData.length,
                               itemBuilder: (context, index) {
-                  return FavDrinkWidget(favDrinkModel: favDrinkData[index] , sizeWidth: 3);
+                  return FavDrinkWidget(favDrinkModel: favDrinkData[index] , sizeWidth: 3 , isFav: false,);
                               },
                             ),
                 );

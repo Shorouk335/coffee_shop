@@ -19,7 +19,7 @@ class AppRouter {
   static const String drinkDetails = "/drink_details";
 
   GoRouter route =
-      GoRouter(navigatorKey: rootKey, initialLocation: splach, routes: [
+      GoRouter(navigatorKey: rootKey, initialLocation: home, routes: [
     GoRoute(
         path: "/",
         name: splach,
