@@ -18,7 +18,7 @@ class _SplachScreenState extends State<SplachScreen> {
   @override
   void initState() {
     Future.delayed(Duration(milliseconds: 1500), () {
-       NavigationService.pushReplacement(context, AppRouter.onBoarding);
+       NavigationService.pushReplacement(AppRouter.onBoarding);
     });
 
     super.initState();

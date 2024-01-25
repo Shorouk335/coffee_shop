@@ -19,7 +19,7 @@ class LayoutScreen extends StatefulWidget {
 }
 
 class LayoutScreenState extends State<LayoutScreen>
-    with SingleTickerProviderStateMixin {
+   {
   @override
   void initState() {
  
@@ -30,7 +30,7 @@ class LayoutScreenState extends State<LayoutScreen>
   Widget build(BuildContext context) {
 
     return Scaffold(
-      backgroundColor: AppColors.background,
+      // backgroundColor: AppColors.background,
       appBar: AppBar( 
         leadingWidth: 60.0,
         backgroundColor: Colors.white,

@@ -39,9 +39,12 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
               return Container(
+                // height: MediaQuery.of(context).size.height,
+                // width: MediaQuery.of(context).size.width,
                 color: AppColors.onBackground,
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 20.0, vertical: 20.0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -53,23 +56,24 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                             InkWell(
                               onTap: () {
                                 NavigationService.pushReplacement(
-                                  context,
                                   AppRouter.home,
-                                
                                 );
                               },
                               child: Text("Skip",
                                   style: TextStyle(
                                       color: AppColors.primary,
-                                      fontSize: 18.0,
+                                      fontSize: 23.0,
                                       fontWeight: FontWeight.bold)),
                             )
                           ],
                         ),
                       ),
-                      SvgIcon(
-                        svg: "cup".svg(),
-                        width: 180,
+                      Container(
+                        width: MediaQuery.of(context).size.width / 2,
+                        height: MediaQuery.of(context).size.height / 3,
+                        child: SvgIcon(
+                          svg: "cup".svg(),
+                        ),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -80,7 +84,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                               style: TextStyle(
                                   color: Colors.black,
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 20),
+                                  fontSize: 23),
                             ),
                             SizedBox(
                               height: 15,
@@ -88,8 +92,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                             Text(
                               discList[index],
                               style: TextStyle(
+                                fontSize: 18.0,
                                 color: Colors.black,
-                                fontWeight: FontWeight.w700,
                               ),
                             ),
                           ],
@@ -102,16 +106,14 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                           children: [
                             SvgIcon(
                               svg: "coffee${index + 1}".svg(),
-                              width: 100,
+                              width: 120,
                             ),
                             Spacer(),
                             InkWell(
                               onTap: () {
                                 if (indexPage == titleList.length - 1) {
                                   NavigationService.pushReplacement(
-                                    context,
                                     AppRouter.home,
-                                  
                                   );
                                 } else {
                                   pageController.nextPage(
@@ -122,15 +124,15 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                               child: Container(
                                 decoration: BoxDecoration(
                                   color: AppColors.primary,
-                                  borderRadius: BorderRadius.circular(20.0),
+                                  borderRadius: BorderRadius.circular(15.0),
                                 ),
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(
-                                      horizontal: 25.0, vertical: 15.0),
+                                      horizontal: 30.0, vertical: 18.0),
                                   child: Text(
                                     "Next",
                                     style: TextStyle(
-                                        color: Colors.white, fontSize: 20.0),
+                                        color: Colors.white, fontSize: 22.0),
                                   ),
                                 ),
                               ),

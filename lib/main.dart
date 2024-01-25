@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
         theme: ThemesManger.appTheme,
 
         builder: (context, child) {
-          return ResponsineWrapper(child: child!);
+          return   ResponsineWrapper(child: child!);
         },
       ),
     );
