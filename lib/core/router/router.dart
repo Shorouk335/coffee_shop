@@ -1,4 +1,5 @@
 import 'package:coffee_shop/core/constant/model/favDrinkModel.dart';
+import 'package:coffee_shop/modules/Cart/module/Presentation/cart.dart';
 import 'package:coffee_shop/modules/DrinkDetails/presentation/drinkDetails.dart';
 import 'package:coffee_shop/modules/home/presentation/home.dart';
 import 'package:coffee_shop/modules/layout/presentation/layout.dart';
@@ -20,6 +21,7 @@ class AppRouter {
   static const String account = "/account";
   static const String rewards = "/rewards";
   static const String drinkDetails = "/drink_details";
+  static const String cart = "/cart";
 
   GoRouter route =
       GoRouter(navigatorKey: rootKey, initialLocation: home, routes: [
@@ -51,8 +53,13 @@ class AppRouter {
           parentNavigatorKey: mobileKey,
           path: "/pay",
           name: pay,
-          pageBuilder: (context, state) =>
-              pageBuilder(context, state, child: HomeScreen()),
+          pageBuilder: (context, state) => pageBuilder(context, state,
+              child: Scaffold(
+                backgroundColor: Colors.amber,
+                body: Center(
+                  child: Text("Pay"),
+                ),
+              )),
         ),
         GoRoute(
           parentNavigatorKey: mobileKey,
@@ -68,7 +75,12 @@ class AppRouter {
           pageBuilder: (context, state) => pageBuilder(
             context,
             state,
-            child: HomeScreen(),
+            child: Scaffold(
+              backgroundColor: Colors.red,
+              body: Center(
+                child: Text("account"),
+              ),
+            ),
           ),
         ),
         GoRoute(
@@ -78,7 +90,12 @@ class AppRouter {
           pageBuilder: (context, state) => pageBuilder(
             context,
             state,
-            child: OrderScreen(),
+            child: Scaffold(
+              backgroundColor: Colors.amber,
+              body: Center(
+                child: Text("Rewards"),
+              ),
+            ),
           ),
         ),
         GoRoute(
@@ -88,10 +105,20 @@ class AppRouter {
             pageBuilder: (context, state) => pageBuilder(
                   context,
                   state,
+                  isMobileRoute: false,
                   child: DrinkDetailsScreen(
-                    //  favDrinkModel:(state.extra as Map?)?["favDrinkModel"],
                     favDrinkModel: state.extra as FavDrinkModel,
                   ),
+                )),
+        GoRoute(
+            parentNavigatorKey: mobileKey,
+            path: "/cart",
+            name: cart,
+            pageBuilder: (context, state) => pageBuilder(
+                  context,
+                  state,
+                  isMobileRoute: false,
+                  child: CartScreen(),
                 )),
       ],
     ),
@@ -100,15 +127,14 @@ class AppRouter {
   // ممكن افكني من كل الحوار ده بتاع  left  و right
   //  واعمل
 
-   static Page pageBuilder(BuildContext context, GoRouterState state,
-      {required Widget child, bool maintainState = false}) {
-        return  CupertinoPage(
-          maintainState:maintainState,
-          key: state.pageKey,
-          child: child,
-        );
-    }
-  
+  //  static Page pageBuilder(BuildContext context, GoRouterState state,
+  //     {required Widget child, bool maintainState = false}) {
+  //       return  MaterialPage(
+  //         maintainState:maintainState,
+  //         key: state.pageKey,
+  //         child: child,
+  //       );
+  //   }
 
 //     maintainState:  false
 //  في حاله لو انا في صفحه وعايز ارجع للي قبلها الصفحه الي قبلها مش هتتحفظ في الميموري
@@ -116,28 +142,30 @@ class AppRouter {
 
 // في حاله لو عايز اعمل  animation   بين الصفح
 
-  // static Page pageBuilder(BuildContext context, GoRouterState state,
-  //     {required Widget child, bool maintainState = false}) {
- 
-  //     switch ((state.extra as Map?)?["transition"]) {
-  //       case "slideLeft":
-  //         //  animation  ال  left
-  //         return slideLeftTransition(context, state,
-  //             child: child, maintainState: maintainState);
-  //       case "slideRight":
-  //         //  animation  ال  right
-  //         return slideRightTranslation(context, state,
-  //             child: child, maintainState: maintainState);
+  static Page pageBuilder(BuildContext context, GoRouterState state,
+      {required Widget child,
+      bool maintainState = false,
+      bool isMobileRoute = true}) {
+    if (isMobileRoute) {
+      switch ((state.extra as Map?)?["transition"]) {
+        case "slideLeft":
+          //  animation  ال  left
+          return slideLeftTransition(context, state,
+              child: child, maintainState: maintainState);
+        case "slideRight":
+          //  animation  ال  right
+          return slideRightTranslation(context, state,
+              child: child, maintainState: maintainState);
 
-  //       default:
-  //         return MaterialPage(
-  //           maintainState: maintainState,
-  //           key: state.pageKey,
-  //           child: child
-  //         );
-  //     }
-    
-  // }
+        default:
+          return MaterialPage(
+              maintainState: maintainState, key: state.pageKey, child: child);
+      }
+    } else {
+      return MaterialPage(
+          maintainState: maintainState, key: state.pageKey, child: child);
+    }
+  }
 
   // slide left nav
   static Page slideLeftTransition(BuildContext context, GoRouterState state,

@@ -9,7 +9,6 @@ class BounsRewordsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
-      alignment: Alignment.centerRight,
       children: [
         Container(
           clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -46,7 +45,8 @@ class BounsRewordsWidget extends StatelessWidget {
                         //   height: 10,
                         // ),
                         Text("Coffee Delivered to your house",
-                            style: TextStyle(color: Colors.white, fontSize: 20.0))
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 20.0))
                       ],
                     ),
                   ),
@@ -72,7 +72,7 @@ class BounsRewordsWidget extends StatelessWidget {
                               fontSize: 20.0,
                               fontWeight: FontWeight.bold),
                         ),
-                     
+
                         Text(
                             "Order any of our coffee and get an additional 30 Stars! Now that’s how you get free coffee!",
                             style:
@@ -106,16 +106,16 @@ class BounsRewordsWidget extends StatelessWidget {
             ],
           ),
         ),
-        Positioned(
-            right: 10,
-            
-            child: Padding(
-              padding: const EdgeInsets.only(bottom: 100.0),
-              child: SvgIcon(
-                svg: "logo".svg(),
-                width: 70,
-              ),
-            )),
+        // Positioned(
+        //     right: 5,
+        //     top: 50,
+        //     child: Padding(
+        //       padding: const EdgeInsets.only(bottom: 100.0),
+        //       child: SvgIcon(
+        //         svg: "logo".svg(),
+        //         width: 50,
+        //       ),
+        //     )),
       ],
     );
   }

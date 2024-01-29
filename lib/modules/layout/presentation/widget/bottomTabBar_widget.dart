@@ -32,7 +32,7 @@ class _BottomTabBarState extends State<BottomTabBar> {
                     children: [
                       InkWell(
                         onTap: () {
-                          NavigationService.goNamed(AppRouter.home,);
+                          NavigationService.mobileNavigateTo(AppRouter.home,);
                            cubit.changeClickTab(0);
                         },
                         child: Column(
@@ -58,7 +58,7 @@ class _BottomTabBarState extends State<BottomTabBar> {
                       ),
                       InkWell(
                         onTap: () {
-                          NavigationService.goNamed(AppRouter.pay);
+                          NavigationService.mobileNavigateTo(AppRouter.pay);
                            cubit.changeClickTab(1);
                         },
                         child: Column(
@@ -84,7 +84,7 @@ class _BottomTabBarState extends State<BottomTabBar> {
                       ),
                       InkWell(
                         onTap: () {
-                          NavigationService.goNamed(AppRouter.order,);
+                          NavigationService.mobileNavigateTo(AppRouter.order,);
                            cubit.changeClickTab(2);
                         },
                         child: Column(
@@ -110,7 +110,7 @@ class _BottomTabBarState extends State<BottomTabBar> {
                       ),
                       InkWell(
                         onTap: () {
-                           NavigationService.goNamed(AppRouter.account);
+                           NavigationService.mobileNavigateTo(AppRouter.account);
                            cubit.changeClickTab(3);
                         },
                         child: Column(
@@ -136,7 +136,7 @@ class _BottomTabBarState extends State<BottomTabBar> {
                       ),
                       InkWell(
                         onTap: () {
-                           NavigationService.goNamed(AppRouter.rewards);
+                           NavigationService.mobileNavigateTo(AppRouter.rewards);
                           cubit.changeClickTab(4);
                         },
                         child: Column(

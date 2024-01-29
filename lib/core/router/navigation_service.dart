@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:coffee_shop/core/router/router.dart';
 import 'package:coffee_shop/core/utils/locator.dart';
 import 'package:coffee_shop/core/utils/utils.dart';
@@ -7,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class NavigationService {
+
   static pushNamed(String name,
       {Object? extra,
       Map<String, String> pathParameters = const <String, String>{},
@@ -52,7 +52,7 @@ class NavigationService {
 
     if (timer?.isActive == true) return;
     // بيعمل  go name  لصفحه من صفح ال  bottom nav  بعد ما يحدد نوع النقل يمين
-    goNamed(routeName, extra: {"transition": slide});
+    goNamed(routeName, extra: {"transition": slide} );
     // مش هيقدر ينقل لصفحه تانيه الا بعد 800
     timer = Timer(const Duration(milliseconds: 800), () {
       //  اقفل التايمر

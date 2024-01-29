@@ -17,10 +17,8 @@ class FavDrinkWidget extends StatelessWidget {
       onTap: () {
         NavigationService.pushNamed(
            AppRouter.drinkDetails,
-            extra: favDrinkModel
-            //  { 
-            //   "favDrinkModel" :favDrinkModel
-            // }  
+            extra: 
+            favDrinkModel 
             
              );
       },

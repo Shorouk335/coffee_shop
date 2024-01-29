@@ -19,4 +19,37 @@ class DrinkDetailsCubit extends Cubit<DrinkDetailState> {
   //lIST OF DROPDOWN
   List<String> cupSizeList = ["Large", "Meduim", "Small"];
   List<String> addInsList = ["Normal Ice", "Cold Ice"];
+  
+
+   changeCupSize (String? size){
+    cupSize = size ;
+    emit(ChangeCupSizeState());
+
+   }
+   changeAddIns (String? ins){
+    addIns = ins ;
+    emit(ChangeAddInsState());
+
+   }
+
+
+  increaseSweetenerValue() {
+   sweetenerValue ++ ;
+    emit(IncreaseSweetenerValueState());
+  }
+
+  increaseFlavorValue() {
+    flavorValue++;
+    emit(IncreaseFlavorValueState());
+  }
+
+  decreaseSweetenerValue() {
+    sweetenerValue--;
+    emit(DecreaseSweetenerValueState());
+  }
+
+  decreaseFlavorValue() {
+    flavorValue--;
+    emit(DecreaseFlavorValueState());
+  }
 }

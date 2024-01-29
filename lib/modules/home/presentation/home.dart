@@ -17,8 +17,9 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
+    return Container( 
+      padding: EdgeInsets.all(15.0),
+      color: AppColors.background ,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
