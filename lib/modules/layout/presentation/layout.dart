@@ -32,9 +32,15 @@ class LayoutScreenState extends State<LayoutScreen> {
         leadingWidth: 60.0,
         backgroundColor: Colors.white,
         elevation: 1.0,
-        leading: Icon(
-          Icons.menu,
-          size: 35,
+        leading: InkWell(
+          onTap: (){
+            NavigationService.pushNamed(AppRouter.login);
+          },
+
+          child: Icon(
+            Icons.menu,
+            size: 35,
+          ),
         ),
         title: SvgIcon(svg: "logo".svg(), width: 30),
         actions: [

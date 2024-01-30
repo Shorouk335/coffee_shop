@@ -1,6 +1,10 @@
 import 'package:coffee_shop/core/constant/model/favDrinkModel.dart';
+import 'package:coffee_shop/core/theme/dynamic_theme/colors.dart';
 import 'package:coffee_shop/modules/Cart/module/Presentation/cart.dart';
+import 'package:coffee_shop/modules/Cart/module/Presentation/widget/invoice.dart';
+import 'package:coffee_shop/modules/Cart/module/Presentation/widget/tracker.dart';
 import 'package:coffee_shop/modules/DrinkDetails/presentation/drinkDetails.dart';
+import 'package:coffee_shop/modules/auth/presentation/login.dart/login.dart';
 import 'package:coffee_shop/modules/home/presentation/home.dart';
 import 'package:coffee_shop/modules/layout/presentation/layout.dart';
 import 'package:coffee_shop/modules/onBoarding/presentation/onboarding.dart';
@@ -22,6 +26,9 @@ class AppRouter {
   static const String rewards = "/rewards";
   static const String drinkDetails = "/drink_details";
   static const String cart = "/cart";
+  static const String invoice = "/invoice";
+  static const String tracker = "/tracker";
+  static const String login = "/login";
 
   GoRouter route =
       GoRouter(navigatorKey: rootKey, initialLocation: home, routes: [
@@ -33,6 +40,10 @@ class AppRouter {
         path: "/onBoarding",
         name: onBoarding,
         builder: (context, state) => const OnBoardingScreen()),
+         GoRoute(
+        path: "/login",
+        name: login,
+        builder: (context, state) => const LoginScreen()),
     ShellRoute(
       navigatorKey: mobileKey,
       builder: (context, state, child) => LayoutScreen(
@@ -120,6 +131,26 @@ class AppRouter {
                   isMobileRoute: false,
                   child: CartScreen(),
                 )),
+        GoRoute(
+            parentNavigatorKey: mobileKey,
+            path: "/invoice",
+            name: invoice,
+            pageBuilder: (context, state) => pageBuilder(
+                  context,
+                  state,
+                  isMobileRoute: false,
+                  child: InvoiceWidget(),
+                )),
+                GoRoute(
+            parentNavigatorKey: mobileKey,
+            path: "/tracker",
+            name: tracker,
+            pageBuilder: (context, state) => pageBuilder(
+                  context,
+                  state,
+                  isMobileRoute: false,
+                  child: TrackerWidget(),
+                )),
       ],
     ),
   ]);
@@ -159,11 +190,15 @@ class AppRouter {
 
         default:
           return MaterialPage(
-              maintainState: maintainState, key: state.pageKey, child: child);
+              maintainState: maintainState, key: state.pageKey, child: Container(
+                color: AppColors.background,
+                child: child));
       }
     } else {
       return MaterialPage(
-          maintainState: maintainState, key: state.pageKey, child: child);
+          maintainState: maintainState, key: state.pageKey, child: Container(
+            color: AppColors.background,
+            child: child));
     }
   }
 
