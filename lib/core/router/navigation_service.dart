@@ -38,7 +38,10 @@ class NavigationService {
     );
   }
 
+  static pop ({bool? value}){
+    Utils.appRouter.route.pop(value);
 
+  }
 
   // بعمل  وقت اما يضفط من زارا الي زرار في ال  bottom nav
   static Timer? timer;

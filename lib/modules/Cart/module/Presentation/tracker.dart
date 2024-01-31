@@ -74,7 +74,7 @@ class _TrackerWidgetState extends State<TrackerWidget> {
           SizedBox(
             height: 20.0,
           ),
-          defultButton(
+          DefultButton(
               color: Colors.grey,
               onTap: () {
                 NavigationService.pushNamed(AppRouter.invoice);
@@ -114,7 +114,7 @@ class _TrackerWidgetState extends State<TrackerWidget> {
           const SizedBox(
             height: 30,
           ),
-          defultButton(
+          DefultButton(
               width: MediaQuery.of(context).size.width / 2,
               onTap: () {
                 NavigationService.pushNamed(AppRouter.invoice);

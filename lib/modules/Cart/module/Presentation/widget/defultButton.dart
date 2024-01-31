@@ -2,8 +2,8 @@
 import 'package:coffee_shop/core/theme/dynamic_theme/colors.dart';
 import 'package:flutter/material.dart';
 
-class defultButton extends StatelessWidget {
-  const defultButton({
+class DefultButton extends StatelessWidget {
+  const DefultButton({
     super.key,
     required this.onTap,
     required this.title,

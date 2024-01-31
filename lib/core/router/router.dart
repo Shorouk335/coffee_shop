@@ -1,10 +1,10 @@
 import 'package:coffee_shop/core/constant/model/favDrinkModel.dart';
 import 'package:coffee_shop/core/theme/dynamic_theme/colors.dart';
 import 'package:coffee_shop/modules/Cart/module/Presentation/cart.dart';
-import 'package:coffee_shop/modules/Cart/module/Presentation/widget/invoice.dart';
-import 'package:coffee_shop/modules/Cart/module/Presentation/widget/tracker.dart';
+import 'package:coffee_shop/modules/Cart/module/Presentation/invoice.dart';
+import 'package:coffee_shop/modules/Cart/module/Presentation/tracker.dart';
 import 'package:coffee_shop/modules/DrinkDetails/presentation/drinkDetails.dart';
-import 'package:coffee_shop/modules/auth/presentation/login.dart/login.dart';
+import 'package:coffee_shop/modules/auth/presentation/login.dart/presentation/login.dart';
 import 'package:coffee_shop/modules/home/presentation/home.dart';
 import 'package:coffee_shop/modules/layout/presentation/layout.dart';
 import 'package:coffee_shop/modules/onBoarding/presentation/onboarding.dart';

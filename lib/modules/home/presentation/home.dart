@@ -4,7 +4,7 @@ import 'package:coffee_shop/core/theme/dynamic_theme/colors.dart';
 import 'package:coffee_shop/core/utils/extension.dart';
 import 'package:coffee_shop/modules/home/presentation/widget/bonus_rewords.dart';
 import 'package:coffee_shop/modules/home/presentation/widget/welcome_widget.dart';
-import 'package:coffee_shop/shared/shared_widget/favDrink.dart';
+import 'package:coffee_shop/modules/home/presentation/widget/favDrink.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
