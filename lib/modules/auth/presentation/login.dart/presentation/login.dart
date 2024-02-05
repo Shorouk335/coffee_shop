@@ -10,6 +10,7 @@ import 'package:coffee_shop/shared/widget/textFormField.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({
@@ -75,8 +76,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     Expanded(
                       child: Container(
-                        padding: EdgeInsets.symmetric(
-                            vertical: 30, horizontal: 50.0),
+                        padding:
+                            EdgeInsets.only(left: 50.0, right: 50.0, top: 30.0),
                         width: double.infinity,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.only(
@@ -184,8 +185,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               height: 30,
                             ),
                             DefultButton(
-                               onTap: () async { 
-                                print("hhhhhhhhhhhh logggin");
+                              onTap: () async {
                                 await cubit.login(
                                     emailAddress: email.text,
                                     password: password.text);
@@ -208,30 +208,28 @@ class _LoginScreenState extends State<LoginScreen> {
                                 SizedBox(
                                   width: 10.0,
                                 ),
-                                Text(
-                                  "Reset here",
-                                  style: TextStyle(
-                                      color: AppColors.primary,
-                                      fontSize: 20.0,
-                                      fontWeight: FontWeight.bold),
+                                InkWell(
+                                  onTap: () async {
+                                    await FirebaseAuth.instance.signOut();
+                                  },
+                                  child: Text(
+                                    "Sign out",
+                                    style: TextStyle(
+                                        color: AppColors.primary,
+                                        fontSize: 20.0,
+                                        fontWeight: FontWeight.bold),
+                                  ),
                                 )
                               ],
                             ),
                             SizedBox(
                               height: 15,
                             ),
-                            InkWell(
-                              onTap: () async{
-                                await FirebaseAuth.instance.signOut();
-
-
-                              },
-                              child: Text(
-                                "Don’t have an account?",
-                                style: TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 20.0,
-                                ),
+                            Text(
+                              "Don’t have an account?",
+                              style: TextStyle(
+                                color: Colors.grey,
+                                fontSize: 20.0,
                               ),
                             ),
                             SizedBox(
@@ -239,15 +237,46 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                             DefultButton(
                               onTap: () async {
-                                  print("hhhhhhhhhhhh create");
                                 await cubit.createAccount(
                                     emailAddress: email.text,
                                     password: password.text);
                               },
                               title: "CREATE NEW ACCOUNT",
                             ),
-                           
-                          
+                            SizedBox(
+                              height: 20,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                InkWell(
+                                    onTap: () async {
+                                      await cubit
+                                          .signInWithGoogle()
+                                          .then((value) {
+                                        cubit.userCredential = value;
+                                      });
+                                    },
+                                    child: FaIcon(FontAwesomeIcons.google,
+                                        size: 45 , 
+                                        color: Colors.red,
+                                        
+                                        
+                                        )),
+                                        SizedBox(width: 20,),
+                                          InkWell(
+                                    onTap: ()  {
+                                   
+                                      } ,
+                                    
+                                    child: FaIcon(FontAwesomeIcons.facebook,
+                                        size: 45 , 
+                                        color: Colors.blue,
+                                        
+                                        
+                                        )),
+                              ],
+                            )
                           ]),
                         ),
                       ),
