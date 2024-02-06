@@ -1,8 +1,29 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <queries>
+        <provider android:authorities="com.facebook.katana.provider.PlatformProvider" />
+    </queries>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- io.flutter.app.FlutterApplication is an android.app.Application that
+     calls FlutterMain.startInitialization(this); in its onCreate method.
+     In most cases you can leave this as-is, but you if you want to provide
+     additional functionality it is fine to subclass or reimplement
+     FlutterApplication and put your custom class here. -->
+    
     <application
         android:label="coffee_shop"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+
+        <meta-data
+        android:name="com.facebook.sdk.ApplicationId"
+        android:value="1086706825982163" />
+        <meta-data 
+        android:name="com.facebook.sdk.ClientToken" 
+        android:value="27eee375addcd86d827b6f6b9af034a0"/>
+
+
         <activity
             android:name=".MainActivity"
             android:exported="true"

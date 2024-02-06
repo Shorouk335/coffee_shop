@@ -198,11 +198,17 @@ class _LoginScreenState extends State<LoginScreen> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text(
-                                  "Forgot password?",
-                                  style: TextStyle(
-                                    color: AppColors.secondary,
-                                    fontSize: 18.0,
+                                InkWell(
+                                  onTap: () async{
+                                   await cubit.SignOutFaceBook();
+
+                                  },
+                                  child: Text(
+                                    "Sign out face book",
+                                    style: TextStyle(
+                                      color: AppColors.secondary,
+                                      fontSize: 18.0,
+                                    ),
                                   ),
                                 ),
                                 SizedBox(
@@ -225,11 +231,16 @@ class _LoginScreenState extends State<LoginScreen> {
                             SizedBox(
                               height: 15,
                             ),
-                            Text(
-                              "Don’t have an account?",
-                              style: TextStyle(
-                                color: Colors.grey,
-                                fontSize: 20.0,
+                            InkWell(
+                              onTap: () async{
+                              await  cubit.SignOutFromGoogle() ;
+                              },
+                              child: Text(
+                                "Sign Out from google",
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 20.0,
+                                ),
                               ),
                             ),
                             SizedBox(
@@ -257,24 +268,23 @@ class _LoginScreenState extends State<LoginScreen> {
                                         cubit.userCredential = value;
                                       });
                                     },
-                                    child: FaIcon(FontAwesomeIcons.google,
-                                        size: 45 , 
-                                        color: Colors.red,
-                                        
-                                        
-                                        )),
-                                        SizedBox(width: 20,),
-                                          InkWell(
-                                    onTap: ()  {
-                                   
-                                      } ,
-                                    
-                                    child: FaIcon(FontAwesomeIcons.facebook,
-                                        size: 45 , 
-                                        color: Colors.blue,
-                                        
-                                        
-                                        )),
+                                    child: FaIcon(
+                                      FontAwesomeIcons.google,
+                                      size: 45,
+                                      color: Colors.red,
+                                    )),
+                                SizedBox(
+                                  width: 20,
+                                ),
+                                InkWell(
+                                    onTap: () async {
+                                      await cubit.signInWithFacebook();
+                                    },
+                                    child: FaIcon(
+                                      FontAwesomeIcons.facebook,
+                                      size: 45,
+                                      color: Colors.blue,
+                                    )),
                               ],
                             )
                           ]),
