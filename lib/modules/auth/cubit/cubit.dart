@@ -9,11 +9,9 @@ class AuthCubit extends Cubit<AuthState> {
 
   static AuthCubit get(context) => AuthCubit();
 
-  UserCredential? userCredential; 
+  UserCredential? userCredential;
 
-
-  GoogleSignIn  google = GoogleSignIn(scopes: ["email","profile"]);
-
+  GoogleSignIn google = GoogleSignIn(scopes: ["email", "profile"]);
 
   createAccount(
       {required String emailAddress, required String password}) async {
@@ -59,9 +57,9 @@ class AuthCubit extends Cubit<AuthState> {
   signOut() async {
     await FirebaseAuth.instance.signOut();
     emit(SignOutAuthState());
-  } 
- 
- //////////////////////////////////
+  }
+
+  //////////////////////////////////
 
   Future<UserCredential> signInWithGoogle() async {
     print("siiiiiiiiiiiign in with gooogle 1111 ");
@@ -86,18 +84,14 @@ class AuthCubit extends Cubit<AuthState> {
     emit(GoogleLogInState());
     return await FirebaseAuth.instance.signInWithCredential(credential);
   }
- 
 
-  
-  SignOutFromGoogle () async{
-
-   await  google.signOut();
+  SignOutFromGoogle() async {
+    await google.signOut();
   }
-
 
 ///////////////////////////////
 
-  FacebookAuth facebook = FacebookAuth.instance ;
+  FacebookAuth facebook = FacebookAuth.instance;
 
   Future<UserCredential> signInWithFacebook() async {
     print("siiiiiiiiiiiign in with face 1111 ");
@@ -115,12 +109,11 @@ class AuthCubit extends Cubit<AuthState> {
     emit(FaceBookLogInState());
     return FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
   }
-  
-  SignOutFaceBook () async{
-  
-   await facebook.logOut();
 
+  SignOutFaceBook() async {
+    await facebook.logOut();
   }
 
+  /////////////////////////////////
 
 }

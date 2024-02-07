@@ -13,7 +13,7 @@ class DefultTextFormField extends StatefulWidget {
       this.textController,
       this.cursorColor,
       this.initialValue,
-      this.textInputType,
+      this.keybordType,
       this.obscureText = false,
       this.onChanged,
       this.onFieldSubmitted,
@@ -37,7 +37,9 @@ class DefultTextFormField extends StatefulWidget {
       this.textColor,
       this.textSize,
       this.boxShadow,
-      this.isPassword = false});
+      this.isPassword = false , 
+      this.aroundContainerPadding =  EdgeInsets.zero , 
+      this.textAlign = TextAlign.start});
   //title
   final String? title;
   final Color? titleColor;
@@ -47,7 +49,7 @@ class DefultTextFormField extends StatefulWidget {
   final Color? cursorColor;
   final bool? showCursor;
   final String? initialValue;
-  final TextInputType? textInputType;
+  final TextInputType? keybordType;
   bool obscureText;
   final void Function(String)? onChanged;
   final void Function(String)? onFieldSubmitted;
@@ -72,6 +74,8 @@ class DefultTextFormField extends StatefulWidget {
   final Color? hintColor;
   final List<BoxShadow>? boxShadow;
   final bool isPassword;
+  EdgeInsetsGeometry? aroundContainerPadding ;
+  TextAlign  textAlign ;
 
   @override
   State<DefultTextFormField> createState() => _DefultTextFormFieldState();
@@ -80,7 +84,9 @@ class DefultTextFormField extends StatefulWidget {
 class _DefultTextFormFieldState extends State<DefultTextFormField> {
   @override
   Widget build(BuildContext context) {
-    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+       children: [
       if (widget.title != null)
         Text(
           widget.title ?? "",
@@ -93,26 +99,33 @@ class _DefultTextFormFieldState extends State<DefultTextFormField> {
         SizedBox(
           height: 25,
         ),
+        // if want to make shadow to text form with the same radius of text form
       Container(
+        padding: widget.aroundContainerPadding ,
         clipBehavior: Clip.antiAliasWithSaveLayer,
         decoration: BoxDecoration(
+           color: Colors.transparent,
             borderRadius: BorderRadius.circular(widget.borderRadius ?? 10.0),
-            boxShadow: widget.boxShadow),
-        child: TextFormField(
+             boxShadow: widget.boxShadow
+            
+            ),
+        child: TextFormField( 
+        
           controller: widget.textController,
           cursorColor: widget.cursorColor,
           showCursor: widget.showCursor,
           initialValue: widget.initialValue,
-          keyboardType: widget.textInputType,
+          keyboardType: widget.keybordType,
           obscureText: widget.obscureText ?? false,
           onChanged: widget.onChanged,
           onFieldSubmitted: widget.onFieldSubmitted,
           onSaved: widget.onSaved,
           style: widget.textStyle,
+          // to controll of align of text in text form field
+          textAlign: widget.textAlign ,
           validator: widget.validator,
           decoration: InputDecoration(
             contentPadding: widget.contentPadding,
-
             label: widget.label,
             labelText: widget.labelText,
             labelStyle: widget.labelStyle,
@@ -120,6 +133,7 @@ class _DefultTextFormFieldState extends State<DefultTextFormField> {
             hintStyle: TextStyle(
                 color: widget.hintColor ?? Colors.grey[400],
                 fontSize: widget.textSize),
+                prefix: widget.prefix,
 
             suffix: widget.isPassword
                 ? InkWell(
@@ -135,7 +149,7 @@ class _DefultTextFormFieldState extends State<DefultTextFormField> {
                     ),
                   )
                 : widget.suffix,
-            prefix: widget.prefix,
+         
             filled: widget.isFilledColor,
             fillColor: widget.fillColor,
             // border before click
@@ -150,6 +164,26 @@ class _DefultTextFormFieldState extends State<DefultTextFormField> {
             ),
             //border after click
             focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.all(
+                  Radius.circular(widget.borderRadius ?? 10.0)),
+              borderSide: BorderSide(
+                  width: widget.borderSideWidth ?? 1.0,
+                  color: widget.borderSideColor ??
+                      widget.fillColor ??
+                      Colors.transparent),
+            ),
+            errorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.all(
+                  Radius.circular(widget.borderRadius ?? 10.0)),
+              borderSide: BorderSide(
+                  width: widget.borderSideWidth ?? 1.0,
+                  color: widget.borderSideColor ??
+                      widget.fillColor ??
+                      Colors.transparent),
+            ), 
+
+
+             focusedErrorBorder:  OutlineInputBorder(
               borderRadius: BorderRadius.all(
                   Radius.circular(widget.borderRadius ?? 10.0)),
               borderSide: BorderSide(

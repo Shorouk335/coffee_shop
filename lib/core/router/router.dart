@@ -5,6 +5,8 @@ import 'package:coffee_shop/modules/Cart/module/Presentation/invoice.dart';
 import 'package:coffee_shop/modules/Cart/module/Presentation/tracker.dart';
 import 'package:coffee_shop/modules/DrinkDetails/presentation/drinkDetails.dart';
 import 'package:coffee_shop/modules/auth/presentation/login.dart/presentation/login.dart';
+import 'package:coffee_shop/modules/auth/presentation/login.dart/presentation/phone/phone.dart';
+import 'package:coffee_shop/modules/auth/presentation/login.dart/presentation/phone/sureCode.dart';
 import 'package:coffee_shop/modules/home/presentation/home.dart';
 import 'package:coffee_shop/modules/layout/presentation/layout.dart';
 import 'package:coffee_shop/modules/onBoarding/presentation/onboarding.dart';
@@ -29,6 +31,8 @@ class AppRouter {
   static const String invoice = "/invoice";
   static const String tracker = "/tracker";
   static const String login = "/login";
+  static const String phone = "/phone";
+  static const String code = "/code";
 
   GoRouter route =
       GoRouter(navigatorKey: rootKey, initialLocation: home, routes: [
@@ -44,6 +48,16 @@ class AppRouter {
         path: "/login",
         name: login,
         builder: (context, state) => const LoginScreen()),
+         GoRoute(
+        path: "/phone",
+        name: phone,
+        builder: (context, state) => const EnterPhoneScreen()),
+         GoRoute(
+        path: "/code",
+        name: code,
+        builder: (context, state) =>  SureCodeScreen(
+          phoneText: state.extra as String ,
+        )),
     ShellRoute(
       navigatorKey: mobileKey,
       builder: (context, state, child) => LayoutScreen(
