@@ -44,6 +44,7 @@ dependencies:
   go_router: ^13.0.1
   google_sign_in: ^6.1.6
   material_color_gen: ^2.0.0
+  pinput: ^3.0.1
   responsive_framework: ^1.1.1
   timeline_tile: ^2.0.0
 

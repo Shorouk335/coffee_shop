@@ -7,6 +7,7 @@ import 'package:coffee_shop/modules/auth/cubit/cubit.dart';
 import 'package:coffee_shop/shared/widget/textFormField.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:pinput/pinput.dart';
 
 class SureCodeScreen extends StatefulWidget {
   const SureCodeScreen({super.key, required this.phoneText});
@@ -17,16 +18,14 @@ class SureCodeScreen extends StatefulWidget {
 }
 
 class _SureCodeScreenState extends State<SureCodeScreen> {
-  
-  TextEditingController code1 = TextEditingController();
-  TextEditingController code2 = TextEditingController();
-  TextEditingController code3 = TextEditingController();
-  TextEditingController code4 = TextEditingController();
-  TextEditingController code5 = TextEditingController();
-  TextEditingController code6 = TextEditingController();
+  TextEditingController code = TextEditingController();
+  // TextEditingController code2 = TextEditingController();
+  // TextEditingController code3 = TextEditingController();
+  // TextEditingController code4 = TextEditingController();
+  // TextEditingController code5 = TextEditingController();
+  // TextEditingController code6 = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  
- 
+
   String? verifiId;
 
   @override
@@ -37,16 +36,29 @@ class _SureCodeScreenState extends State<SureCodeScreen> {
 
   @override
   void dispose() {
-    code1.dispose();
-    code2.dispose();
-    code3.dispose();
-    code4.dispose();
-    code5.dispose();
-    code6.dispose();
+    code.dispose();
+    // code2.dispose();
+    // code3.dispose();
+    // code4.dispose();
+    // code5.dispose();
+    // code6.dispose();
     super.dispose();
   }
 
   FirebaseAuth auth = FirebaseAuth.instance;
+  final focusNode = FocusNode();
+
+  final defaultPinTheme = PinTheme(
+      width: 80,
+      height: 60,
+      textStyle: const TextStyle(
+        fontSize: 25,
+        color: Color.fromRGBO(30, 60, 87, 1),
+      ),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(15),
+        border: Border.all(color: AppColors.secondary),
+      ));
 
   signWithPhone(String phone) async {
     await FirebaseAuth.instance.verifyPhoneNumber(
@@ -61,15 +73,16 @@ class _SureCodeScreenState extends State<SureCodeScreen> {
   }
 
   sendCode(String? verificationId) async {
-    print("verificationId                     $verificationId");
     // Update the UI - wait for the user to enter the SMS code
     try {
-      String smsCode = code1.text +
-          code2.text +
-          code3.text +
-          code4.text +
-          code5.text +
-          code6.text;
+      String smsCode = code.text;
+
+      //  code1.text +
+      //     code2.text +
+      //     code3.text +
+      //     code4.text +
+      //     code5.text +
+      //     code6.text;
       // Create a PhoneAuthCredential with the code
       PhoneAuthCredential credential = PhoneAuthProvider.credential(
           verificationId: verificationId!, smsCode: smsCode);
@@ -123,115 +136,143 @@ class _SureCodeScreenState extends State<SureCodeScreen> {
                     SizedBox(
                       height: 50,
                     ),
-                    Row(
-                      children: [
-                        Expanded(
-                          flex: 1,
-                          child: DefultTextFormField(
-                            keybordType: TextInputType.phone,
-                            validator: DefultValidation.codeValidation,
-                            textController: code1,
-                            cursorColor: AppColors.secondary,
-                            hintText: "1",
-                            textAlign: TextAlign.center,
-                            textStyle: TextStyle(fontSize: 25.0),
-                            fillColor: Colors.white,
-                            isFilledColor: true,
-                            borderSideColor: AppColors.secondary,
-                          ),
-                        ),
-                        SizedBox(
+                    Center(
+                      child: Pinput(
+                        length: 6,
+                        controller: code,
+                        androidSmsAutofillMethod:
+                            AndroidSmsAutofillMethod.smsRetrieverApi,
+                        listenForMultipleSmsOnAndroid: true,
+                        separatorBuilder: (index) => SizedBox(
                           width: 10,
                         ),
-                        Expanded(
-                          flex: 1,
-                          child: DefultTextFormField(
-                            keybordType: TextInputType.phone,
-                            validator: DefultValidation.codeValidation,
-                            textController: code2,
-                            cursorColor: AppColors.secondary,
-                            hintText: "2",
-                            textAlign: TextAlign.center,
-                            textStyle: TextStyle(fontSize: 25.0),
-                            fillColor: Colors.white,
-                            isFilledColor: true,
-                            borderSideColor: AppColors.secondary,
-                          ),
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Expanded(
-                          flex: 1,
-                          child: DefultTextFormField(
-                            keybordType: TextInputType.phone,
-                            validator: DefultValidation.codeValidation,
-                            textController: code3,
-                            cursorColor: AppColors.secondary,
-                            hintText: "3",
-                            textAlign: TextAlign.center,
-                            textStyle: TextStyle(fontSize: 25.0),
-                            fillColor: Colors.white,
-                            isFilledColor: true,
-                            borderSideColor: AppColors.secondary,
-                          ),
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Expanded(
-                          flex: 1,
-                          child: DefultTextFormField(
-                            keybordType: TextInputType.phone,
-                            validator: DefultValidation.codeValidation,
-                            textController: code4,
-                            cursorColor: AppColors.secondary,
-                            hintText: "4",
-                            textAlign: TextAlign.center,
-                            textStyle: TextStyle(fontSize: 25.0),
-                            fillColor: Colors.white,
-                            isFilledColor: true,
-                            borderSideColor: AppColors.secondary,
-                          ),
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Expanded(
-                          flex: 1,
-                          child: DefultTextFormField(
-                            keybordType: TextInputType.phone,
-                            validator: DefultValidation.codeValidation,
-                            textController: code5,
-                            cursorColor: AppColors.secondary,
-                            hintText: "5",
-                            textAlign: TextAlign.center,
-                            textStyle: TextStyle(fontSize: 25.0),
-                            fillColor: Colors.white,
-                            isFilledColor: true,
-                            borderSideColor: AppColors.secondary,
-                          ),
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Expanded(
-                          flex: 1,
-                          child: DefultTextFormField(
-                            keybordType: TextInputType.phone,
-                            validator: DefultValidation.codeValidation,
-                            textController: code6,
-                            cursorColor: AppColors.secondary,
-                            hintText: "6",
-                            textAlign: TextAlign.center,
-                            textStyle: TextStyle(fontSize: 25.0),
-                            fillColor: Colors.white,
-                            isFilledColor: true,
-                            borderSideColor: AppColors.secondary,
-                          ),
-                        ),
-                      ],
+                        defaultPinTheme: defaultPinTheme,
+                        focusedPinTheme: defaultPinTheme.copyWith(
+                            decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          border: Border.all(color: Colors.black),
+                        )),
+                        
+                        focusNode: focusNode,
+                        // validator: (value) {
+                        //   return value != null ? null : 'Pin is incorrect';
+                        // },
+                        onCompleted: (pin) {
+                          // focusNode.dispose();
+                          debugPrint('onCompleteddddddddddddddddddddddddddddddddddddddd: $pin');
+                          sendCode(verifiId);
+                        },
+                      ),
                     ),
+                    // Row(
+                    //   children: [
+                    //     Expanded(
+                    //       flex: 1,
+                    //       child: DefultTextFormField(
+                    //         keybordType: TextInputType.phone,
+                    //         validator: DefultValidation.codeValidation,
+                    //         textController: code1,
+                    //         cursorColor: AppColors.secondary,
+                    //         hintText: "1",
+                    //         textAlign: TextAlign.center,
+                    //         textStyle: TextStyle(fontSize: 25.0),
+                    //         fillColor: Colors.white,
+                    //         isFilledColor: true,
+                    //         borderSideColor: AppColors.secondary,
+                    //       ),
+                    //     ),
+                    //     SizedBox(
+                    //       width: 10,
+                    //     ),
+                    //     Expanded(
+                    //       flex: 1,
+                    //       child: DefultTextFormField(
+                    //         keybordType: TextInputType.phone,
+                    //         validator: DefultValidation.codeValidation,
+                    //         textController: code2,
+                    //         cursorColor: AppColors.secondary,
+                    //         hintText: "2",
+                    //         textAlign: TextAlign.center,
+                    //         textStyle: TextStyle(fontSize: 25.0),
+                    //         fillColor: Colors.white,
+                    //         isFilledColor: true,
+                    //         borderSideColor: AppColors.secondary,
+                    //       ),
+                    //     ),
+                    //     SizedBox(
+                    //       width: 10,
+                    //     ),
+                    //     Expanded(
+                    //       flex: 1,
+                    //       child: DefultTextFormField(
+                    //         keybordType: TextInputType.phone,
+                    //         validator: DefultValidation.codeValidation,
+                    //         textController: code3,
+                    //         cursorColor: AppColors.secondary,
+                    //         hintText: "3",
+                    //         textAlign: TextAlign.center,
+                    //         textStyle: TextStyle(fontSize: 25.0),
+                    //         fillColor: Colors.white,
+                    //         isFilledColor: true,
+                    //         borderSideColor: AppColors.secondary,
+                    //       ),
+                    //     ),
+                    //     SizedBox(
+                    //       width: 10,
+                    //     ),
+                    //     Expanded(
+                    //       flex: 1,
+                    //       child: DefultTextFormField(
+                    //         keybordType: TextInputType.phone,
+                    //         validator: DefultValidation.codeValidation,
+                    //         textController: code4,
+                    //         cursorColor: AppColors.secondary,
+                    //         hintText: "4",
+                    //         textAlign: TextAlign.center,
+                    //         textStyle: TextStyle(fontSize: 25.0),
+                    //         fillColor: Colors.white,
+                    //         isFilledColor: true,
+                    //         borderSideColor: AppColors.secondary,
+                    //       ),
+                    //     ),
+                    //     SizedBox(
+                    //       width: 10,
+                    //     ),
+                    //     Expanded(
+                    //       flex: 1,
+                    //       child: DefultTextFormField(
+                    //         keybordType: TextInputType.phone,
+                    //         validator: DefultValidation.codeValidation,
+                    //         textController: code5,
+                    //         cursorColor: AppColors.secondary,
+                    //         hintText: "5",
+                    //         textAlign: TextAlign.center,
+                    //         textStyle: TextStyle(fontSize: 25.0),
+                    //         fillColor: Colors.white,
+                    //         isFilledColor: true,
+                    //         borderSideColor: AppColors.secondary,
+                    //       ),
+                    //     ),
+                    //     SizedBox(
+                    //       width: 10,
+                    //     ),
+                    //     Expanded(
+                    //       flex: 1,
+                    //       child: DefultTextFormField(
+                    //         keybordType: TextInputType.phone,
+                    //         validator: DefultValidation.codeValidation,
+                    //         textController: code6,
+                    //         cursorColor: AppColors.secondary,
+                    //         hintText: "6",
+                    //         textAlign: TextAlign.center,
+                    //         textStyle: TextStyle(fontSize: 25.0),
+                    //         fillColor: Colors.white,
+                    //         isFilledColor: true,
+                    //         borderSideColor: AppColors.secondary,
+                    //       ),
+                    //     ),
+                    //   ],
+                    // ),
                     SizedBox(
                       height: 50,
                     ),
